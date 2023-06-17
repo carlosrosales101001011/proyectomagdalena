@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmls:th="http:///www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Clientes</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+                      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">   
+                    </head>
+                    <body  >
+                        
+                        
+                          <nav class="navbar navbar-expand-lg navbar-light bg-dark  ">
+
+                            <div class="container-fluid">
+
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div class="collapse navbar-collapse" id="navbarText">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                                            <a  class="nav-link" style="color: white" th:href="@{/Cliente}">Clientes<i class="fa-solid fa-graduation-cap"></i></a>
+                                        </li>     
+                                        <li class="nav-item">
+                                            <a  class="nav-link" style="color: white"  th:href="@{/Producto}">Productos<i class="fa-solid fa-book"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                        </nav>
+
+
+
+                        <i> <h1 class="text-center"> Listado de Clientes
+                                <a class="navbar-brand " href="#"  ><img src="https://atrevete.academy/blog/wp-content/uploads/2020/03/giphy-19.gif" class="img-fluid "  width="100px" height="100px" ></a> 
+                            </h1></i> 
+                         <div class="container">
+                        <a class="btn btn-warning" th:href="@{Cliente/agregar}">Agregar Cliente<i class="fa-solid fa-user"></i> </a>
+
+
+                        </br>
+                       
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Razon Social</th>
+                                    <th scope="col">Dni</th>
+                                    <!--                                    <th scope="col">imagen</th>-->
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Email</th>
+                                   
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="cliente : ${clientes}">
+                                    
+                                    <td th:text="${cliente.razon_social}"  > Mostrar nombre</td>
+                                    <td th:text="${cliente.dni}"  > Mostrar precio</td>
+                                    <!--                                    <td th:text="${producto.imagen}"  > Mostrar imagen</td>-->
+                                    <td th:text="${cliente.telefono}"  > Mostrar stock</td>
+                                    <td th:text="${cliente.email}"  > Mostrar marca</td>
+<!--                                      <td><a class="btn btn-success" th:href="@{/Producto/detalle/} + ${producto.idproducto}" >Detalle<i class="fa-solid fa-cart-shopping"></i></a></td>-->
+                                    <td> <a  class="btn btn-primary"   th:href="@{/Cliente/editar/}  + ${cliente.id}">Editar<i class="fa-solid fa-user-pen"></i></a> </td>
+                                                          <td> <a  class="btn btn-danger"   th:href="@{Cliente/Eliminar/}  + ${cliente.id}" th:text="Eliminar"/></td>
+<!--                                    <td><a class="btn btn-danger" th:href="@{/Cliente/Eliminar/} + ${producto.idpro}">Eliminar<i class="fa-solid fa-trash"></i></a></td>-->
+                                  
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+
+                    </body>
+
+                    <script src="https://kit.fontawesome.com/9a82813591.js" crossorigin="anonymous"></script>
+                    </html>
+

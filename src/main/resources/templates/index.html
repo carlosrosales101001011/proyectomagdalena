@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmls:th="http:///www.thymeleaf.org">
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1> INICIO </h1>
+        <a th:href="@{/agregar}">Crear Persona </a>
+        
+        
+         </br>
+         <div th:if="${personas != null and !personas.Empty}"  >
+             <table border="1">
+                 <tr>
+                     <th>Nombres</th>
+                     <th>Apellidos</th>
+                     <th>Email</th>
+                     <th>Telefono</th>
+                     <th>Editar</th>
+                     <th>Eliminar</th>
+                 </tr>
+                 
+                 <tr th:each="persona : ${personas}">
+                     <td th:text="${persona.nombres}"  > Mostrar nombre</td>
+                     <td th:text="${persona.apellidos}"  > Mostrar apellido</td>
+                     <td th:text="${persona.email}"  > Mostrar email</td>
+                     <td th:text="${persona.telefono}"  > Mostrar telefono</td>
+                     <td> <a th:href="@{/editar/}  + ${persona.idpersona}" th:text="Editar"/> </td>
+                    
+                 </tr>
+                 
+             </table>
+             
+             
+         </div>
+         <div th:if ="${personas ==null or personas.empty }">
+             la lista de personas esta vacia
+             
+         </div> 
+<!--         Nombre :<span th:text="${persona.nombres}"     > Mestra Nombre </span>
+         </br>
+         Apellido :<span th:text="${persona.apellidos}"     > Mestra Apellido </span>
+         </br>
+         Email :<span th:text="${persona.email}"     > Mestra Email </span>
+         </br>
+         Telefono :<span th:text="${persona.telefono}"     > Mestra Email </span>-->
+    
+    </body>
+</html>
